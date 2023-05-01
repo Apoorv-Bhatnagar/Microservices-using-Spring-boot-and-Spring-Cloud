@@ -1,3 +1,8 @@
+spring:
+  application:
+      name: Apoorv-bhatnagar
+
+
 eureka:
   instance:
     prefer-ip-address: true
