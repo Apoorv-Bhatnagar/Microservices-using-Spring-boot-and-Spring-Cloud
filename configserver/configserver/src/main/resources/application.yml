@@ -1,0 +1,14 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: config-server
+
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Apoorv-Bhatnagar/Microservices-using-Spring-boot-and-Spring-Cloud
+          clone-on-start: true
