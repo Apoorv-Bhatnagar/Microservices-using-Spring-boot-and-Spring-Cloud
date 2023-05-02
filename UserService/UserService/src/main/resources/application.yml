@@ -42,6 +42,12 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         slidingWindowSize: 10
         slidingWindowType: Count_Based
+
+  retry:
+    instances:
+      ratinghotelservice:
+        max-attempts: 3
+        wait-duration: 5s
 #
 #eureka:
 #  instance:

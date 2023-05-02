@@ -3,6 +3,7 @@ package com.apoorv.user.service.UserService.controller;
 import com.apoorv.user.service.UserService.entities.User;
 import com.apoorv.user.service.UserService.services.UserService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,8 @@ public class UserController {
            return ResponseEntity.status(HttpStatus.CREATED).body(user1);
     }
     @GetMapping("/{userId}")
-    @CircuitBreaker(name="ratinghotelbreaker",fallbackMethod = "ratinghotelbreakerfallback")
+    //@CircuitBreaker(name="ratinghotelbreaker",fallbackMethod = "ratinghotelbreakerfallback")
+    @Retry(name= "ratinghotelservice",fallbackMethod = "ratinghotelbreakerfallback")
     public ResponseEntity<User> getsingleUser(@PathVariable String userId)
     {
         User user=userService.getUser(userId);
